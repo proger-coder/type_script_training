@@ -144,4 +144,16 @@ makeTurn('right');
 console.log(state); // [null, null, 'turtle', null, null]
 makeTurn('left');
 
-// -----------------------------------------------
+// -----------------Intersection Types (пересечение)-------------------------
+type typeA = {
+    condition: 'used'|'new' };
+type typeB = {
+    price: 100;
+}
+type typeC = typeA & typeB; //этот новый тип подразумевает логическое AND
+
+// эта переменная относится к типу C, объединяющему оба требования
+const example:typeC = {
+    condition: 'used',
+    price: 100
+}
