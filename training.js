@@ -126,9 +126,45 @@ console.log(num); // 3
 var randomNum = 4;
 //const four:triChisla = randomNum; // нельзя
 //---------- приведение типов Type assertion: -------
-//const anyValue:any = "Hello, wrot!"; // переменная широкого профиля
-var anyValue = 100;
-var anysLength = anyValue.length; //
-console.log(anysLength); // 12
+var anyValue = "Hello, wrot!"; // переменная широкого профиля
+// рассматривать, как строчную
+var anysLength = anyValue.length;
+// или через as:
 var anysAsLength = anyValue.length;
+console.log(anysLength); // 12
 console.log(anysAsLength); // 12
+var Bar = /** @class */ (function () {
+    function Bar() {
+        this.otherF = 5;
+    }
+    Bar.prototype.bar = function () {
+        console.log('Bar!');
+    };
+    return Bar;
+}());
+var bar = new Bar();
+console.log(bar.otherF);
+bar.bar();
+// ------- Дженерики -------------
+function identity(argument) {
+    return argument;
+}
+console.log(identity(6));
+function getLength(arg) {
+    return arg.length;
+}
+var address = {
+    country: 'KZ',
+    city: "Rudnyi",
+    street: "Chekhova",
+    building: 3
+};
+var dvas = { raz: 1, dvas: false };
+//--------------
+var arr1 = [1, 2, 3];
+var arr2 = [1, 2, 3];
+//--------------
+function getEvenNumbers(array) {
+    return array.filter(function (el) { return el % 2 === 0; });
+}
+console.log(getEvenNumbers([1, 3, 8, 9, 100, 23, 55, 34]));

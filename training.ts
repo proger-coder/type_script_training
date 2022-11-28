@@ -204,9 +204,89 @@ interface CarInterf {
     year:number
 }
 
+
+interface Foo{
+    otherF: number
+}
+
+class Bar implements Foo{
+    otherF = 5;
+    bar():void{
+        console.log('Bar!');
+    }
+}
+
+const bar = new Bar();
+console.log(bar.otherF)
+bar.bar();
+
 // ------- Дженерики -------------
-function check <Type>(argument:Type): Type{
+function identity<Type>(argument:Type): Type{
     return argument;
 }
 
-console.log(check(6));
+console.log(identity(6));
+
+//---
+interface Lengthwise {
+    length: number;
+}
+
+function getLength<T extends Lengthwise>(arg: T): number {
+    return arg.length;
+}
+
+// ------- Расширение типов ------
+
+interface innerAddress {
+    city: string,
+    street: string,
+    building: number
+}
+
+interface outerAddress extends innerAddress{
+    country: string
+}
+
+const address:outerAddress = {
+    country: 'KZ',
+    city: "Rudnyi",
+    street: "Chekhova",
+    building: 3,
+}
+
+// - расширение: Интерфейсы
+interface baz {
+    baz:string
+}
+
+interface qux{
+    qux: number
+}
+
+interface rol extends baz, qux {
+    rol(): void
+}
+
+// - расширение: Алиасы типов
+
+type Raz = {
+    raz: number;
+}
+
+type Dvas = Raz & {
+    dvas: boolean;
+}
+
+const dvas:Dvas = {raz:1, dvas: false}
+
+//--------------
+let arr1: number[] = [1, 2, 3];
+let arr2: Array<number> = [1, 2, 3];
+
+//--------------
+function getEvenNumbers(array: Array<number>):Array<number>{
+    return array.filter(el => el%2 === 0)
+}
+
+console.log(getEvenNumbers( [1, 3, 8, 9, 100, 23, 55, 34]));
