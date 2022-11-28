@@ -137,8 +137,8 @@ console.log(state); // ['turtle', null, null, null, null]
 
 makeTurn('right');
 makeTurn('right');
-makeTurn('right');
-makeTurn('right');
+// makeTurn('right');
+// makeTurn('right');
 console.log(state); // [null, null, 'turtle', null, null]
 makeTurn('right');
 console.log(state); // [null, null, 'turtle', null, null]
@@ -157,3 +157,56 @@ const example:typeC = {
     condition: 'used',
     price: 100
 }
+
+type stringOrNumber = string | number;
+type stringAndNumber = string & number; // так не бывает - множества не пересекаются
+
+//--------------иерархия типов------------------------
+
+type triChisla = 3|4|5;
+const tri:triChisla = 3;
+
+let num:number = tri;
+console.log(tri); // 3
+console.log(num); // 3
+
+// подмножество triChisla входит в множество Number. А наоборот - нельзя
+// Type 'number' is not assignable to type 'triChisla'
+type allNums = number;
+let randomNum: allNums = 4;
+//const four:triChisla = randomNum; // нельзя
+
+//---------- приведение типов Type assertion: -------
+
+const anyValue:any = "Hello, wrot!"; // переменная широкого профиля
+
+// рассматривать, как строчную
+const anysLength:number = (<string>anyValue).length;
+    // или через as:
+const anysAsLength:number = (anyValue as string).length;
+
+console.log(anysLength); // 12
+console.log(anysAsLength); // 12
+
+// ---------- Интерфейсы и Алиасы типов: -------------
+
+type CarAlias = {
+    used: boolean,
+    beep(): void
+}
+
+interface CarInterf {
+    used: boolean,
+    beep(): void
+}
+    // расширение Интерфейса (добавляем свойство)
+interface CarInterf {
+    year:number
+}
+
+// ------- Дженерики -------------
+function check <Type>(argument:Type): Type{
+    return argument;
+}
+
+console.log(check(6));

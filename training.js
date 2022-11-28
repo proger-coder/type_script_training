@@ -108,9 +108,27 @@ console.log(state); // ['turtle', null, null, null, null]
 //makeTurn('left') // ERROR
 makeTurn('right');
 makeTurn('right');
-makeTurn('right');
-makeTurn('right');
+// makeTurn('right');
+// makeTurn('right');
 console.log(state); // [null, null, 'turtle', null, null]
 makeTurn('right');
 console.log(state); // [null, null, 'turtle', null, null]
 makeTurn('left');
+// эта переменная относится к типу C, объединяющему оба требования
+var example = {
+    condition: 'used',
+    price: 100
+};
+var tri = 3;
+var num = tri;
+console.log(tri); // 3
+console.log(num); // 3
+var randomNum = 4;
+//const four:triChisla = randomNum; // нельзя
+//---------- приведение типов Type assertion: -------
+//const anyValue:any = "Hello, wrot!"; // переменная широкого профиля
+var anyValue = 100;
+var anysLength = anyValue.length; //
+console.log(anysLength); // 12
+var anysAsLength = anyValue.length;
+console.log(anysAsLength); // 12
