@@ -168,3 +168,50 @@ function getEvenNumbers(array) {
     return array.filter(function (el) { return el % 2 === 0; });
 }
 console.log(getEvenNumbers([1, 3, 8, 9, 100, 23, 55, 34]));
+// приведение типов - оба варианта
+var typeraz1 = {};
+var typeraz2 = {};
+var stroki = {
+    raz: 'razzz',
+    dva: 'dvasss'
+};
+var a_raznoe = {
+    raz: 'razzz',
+    tri: 3
+};
+var i_raznoe = {
+    raz: 'razzz',
+    dva: 'dvasss',
+    tri: 3,
+    chetyre: 444
+};
+//------ enum ---------
+var laptops;
+(function (laptops) {
+    laptops[laptops["HP"] = 0] = "HP";
+    laptops[laptops["Apple"] = 1] = "Apple";
+    laptops[laptops["LG"] = 2] = "LG";
+})(laptops || (laptops = {}));
+console.log(laptops.Apple); // 1
+console.log(laptops[0]); // HP
+var keyVal;
+(function (keyVal) {
+    keyVal["phone"] = "Samsung";
+    keyVal["laptop"] = "Lenovo";
+    keyVal["moto"] = "Honda";
+})(keyVal || (keyVal = {}));
+console.log(keyVal[0]); // undefined
+console.log(keyVal.moto); // Honda
+// --- Классы: -----------
+var Device = /** @class */ (function () {
+    function Device(model, brand) {
+        this.brand = brand;
+        this.user = "Ayrat";
+        // можно так и оставить, и не писать this.brand = brand. СамО всё сделает
+        this.model = model;
+    }
+    return Device;
+}());
+var myA3 = new Device("A3", "Samsung");
+console.log(myA3.brand); //
+console.log(myA3);

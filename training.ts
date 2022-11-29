@@ -290,3 +290,94 @@ function getEvenNumbers(array: Array<number>):Array<number>{
 }
 
 console.log(getEvenNumbers( [1, 3, 8, 9, 100, 23, 55, 34]));
+
+// --- раннее назначение с приведением типов (type Assertion) ------
+
+type TypeRaz = {
+    readonly id: number,
+}
+        // приведение типов - оба варианта
+const typeraz1 = {} as TypeRaz;
+const typeraz2 = <TypeRaz>{}
+
+// Интерфейсы принято называть с большой буквы I
+
+// Интерфейс для большого объекта, в котором тупо много перечислять:
+
+interface Stroki {
+    [key: string]: string
+}
+
+const stroki: Stroki = {
+    raz: 'razzz',
+    dva: 'dvasss',
+}
+
+interface I_Raznoe {
+    [key: string]: string|number,
+}
+
+type A_Raznoe = {
+    [key: string]: string|number
+}
+
+const a_raznoe:A_Raznoe = {
+    raz: 'razzz',
+    tri: 3
+}
+
+const i_raznoe:I_Raznoe = {
+    raz: 'razzz',
+    dva: 'dvasss',
+    tri: 3,
+    chetyre: 444
+}
+//------ enum ---------
+
+enum laptops {
+    "HP",
+    "Apple",
+    "LG"
+}
+console.log(laptops.Apple); // 1
+console.log(laptops[0]); // HP
+
+enum keyVal {
+    phone = 'Samsung',
+    laptop = 'Lenovo',
+    moto = 'Honda',
+}
+
+console.log(keyVal[0]); // undefined
+console.log(keyVal.moto); // Honda
+
+// --- Классы: -----------
+
+class Device {
+    readonly user: string = "Ayrat";
+    model: string;
+    constructor(model: string, readonly brand: string) {
+        // можно так и оставить, и не писать this.brand = brand. СамО всё сделает
+        this.model = model;
+    }
+}
+
+const myA3 = new Device("A3", "Samsung");
+console.log(myA3.brand); //
+console.log(myA3); // Device { brand: 'Samsung', user: 'Ayrat', model: 'A3' }
+
+// --- абстрактные классы ------
+// ни во что не компилируются, но от них можно наследоваться
+abstract class Component {
+    abstract render(): void;
+    abstract show(): string;
+}
+
+class newComponent extends Component {
+    render(){
+        console.log("newComponent");
+    }
+    show(){
+        return 'newComponent';
+    }
+}
