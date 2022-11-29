@@ -1,6 +1,21 @@
 /* проверить входной тип, объект ли это(массив != объект).
 Чтобы работать с unknown, переназначаем в any
 (т.к. с unknown каши не сваришь) */
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 function isPlainObject(value) {
     if (value instanceof Object) {
         var x = value;
@@ -150,6 +165,10 @@ function identity(argument) {
     return argument;
 }
 console.log(identity(6));
+function reverse(array) {
+    return array.reverse();
+}
+console.log(reverse([1, 2, 3]));
 function getLength(arg) {
     return arg.length;
 }
@@ -214,4 +233,24 @@ var Device = /** @class */ (function () {
 }());
 var myA3 = new Device("A3", "Samsung");
 console.log(myA3.brand); //
-console.log(myA3);
+console.log(myA3); // Device { brand: 'Samsung', user: 'Ayrat', model: 'A3' }
+// --- абстрактные классы ------
+// ни во что не компилируются, но от них можно наследоваться
+var Component = /** @class */ (function () {
+    function Component() {
+    }
+    return Component;
+}());
+var newComponent = /** @class */ (function (_super) {
+    __extends(newComponent, _super);
+    function newComponent() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    newComponent.prototype.render = function () {
+        console.log("newComponent");
+    };
+    newComponent.prototype.show = function () {
+        return 'newComponent';
+    };
+    return newComponent;
+}(Component));

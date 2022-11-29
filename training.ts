@@ -227,7 +227,12 @@ function identity<Type>(argument:Type): Type{
 
 console.log(identity(6));
 
-//---
+function reverse<Type>(array:Type[]): Type[]{
+    return array.reverse();
+}
+
+console.log(reverse([1,2,3]));
+
 interface Lengthwise {
     length: number;
 }
@@ -381,3 +386,20 @@ class newComponent extends Component {
         return 'newComponent';
     }
 }
+
+//--- keyof, Exclude, Pick ----
+
+// keyof - это узкий литеральный тип, состоящий из имён ключей объектного типа.
+interface Building{
+    floors: number;
+    roof: string;
+    entrances: number;
+}
+
+type Props = keyof Building;
+
+// type Props = 'floors' | 'roof' | 'entrances'
+const f:Props  = 'floors';
+const r:Props = 'roof';
+const e:Props = 'entrances';
+const err:Props = 'error'; // ошибка
