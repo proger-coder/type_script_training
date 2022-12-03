@@ -16,6 +16,15 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 function isPlainObject(value) {
     if (value instanceof Object) {
         var x = value;
@@ -68,7 +77,7 @@ function last(value) {
             else {
                 return value % 10;
             }
-        }
+        },
     };
     var type = typeof value;
     return variants[type](value);
@@ -176,7 +185,7 @@ var address = {
     country: 'KZ',
     city: "Rudnyi",
     street: "Chekhova",
-    building: 3
+    building: 3,
 };
 var dvas = { raz: 1, dvas: false };
 //--------------
@@ -192,7 +201,7 @@ var typeraz1 = {};
 var typeraz2 = {};
 var stroki = {
     raz: 'razzz',
-    dva: 'dvasss'
+    dva: 'dvasss',
 };
 var a_raznoe = {
     raz: 'razzz',
@@ -254,3 +263,38 @@ var newComponent = /** @class */ (function (_super) {
     };
     return newComponent;
 }(Component));
+// type Props = 'floors' | 'roof' | 'entrances'
+var f = 'floors';
+var r = 'roof';
+var e = 'entrances';
+//const err:Props = 'error'; // ошибка
+// -- Дескрипторы --
+function deco(target, propertyKey, descriptor) {
+    console.log(descriptor);
+}
+function classDeco(constructor) {
+    return constructor('albert', 58);
+}
+var User = /** @class */ (function () {
+    function User(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    User.prototype.getPass = function () {
+        return "".concat(this.name).concat(this.age);
+    };
+    __decorate([
+        deco,
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", String)
+    ], User.prototype, "getPass", null);
+    User = __decorate([
+        classDeco,
+        __metadata("design:paramtypes", [String, Number])
+    ], User);
+    return User;
+}());
+var nu = new User('ayrat', 33);
+nu.getPass();
+console.log(nu);
