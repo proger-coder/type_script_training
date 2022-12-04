@@ -1,5 +1,5 @@
-do:
-	tsc -w --target ES6 --emitDecoratorMetadata --experimentalDecorators ./training.ts
+dec:
+	tsc -w --target ES6 --emitDecoratorMetadata --experimentalDecorators ./decorators.ts
 
 gen:
 	tsc -w --target ES6 --emitDecoratorMetadata --experimentalDecorators ./generics.ts

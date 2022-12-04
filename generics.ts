@@ -44,7 +44,7 @@ console.log(vladiLength('vladiLength'));    //Длина value: 11
 console.log(vladiLength({length: 4}));  //Длина value: 4
 
 // функция выдаёт значение ключа объекта (из переданного)
-
+// T  - объект, а R - один из ключей объекта T
 function getObjectValue<T extends object, R extends keyof T>(obj:T, key:R){
     return obj[key];
 }

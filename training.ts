@@ -383,27 +383,3 @@ const r:Props = 'roof';
 const e:Props = 'entrances';
 //const err:Props = 'error'; // ошибка
 
-// -- Дескрипторы --
-
-function deco(target: Object, propertyKey: string, descriptor: any):any{
-    console.log(descriptor);
-}
-function classDeco(constructor: Function):any{
-    console.log(constructor);
-}
-
-@classDeco
-class User{
-    constructor(public name:string, public age:number){
-
-    }
-
-    @deco
-    public getPass(): string {
-        return `${this.name}${this.age}`
-    }
-}
-
-const nu = new User('ayrat', 33);
-nu.getPass();
-console.log(nu)
