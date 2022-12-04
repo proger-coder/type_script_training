@@ -12,7 +12,6 @@ namespace Glasses {
         left: number,
         right: number,
     }
-
     export type Glasses =  {
         frame: Frame;
         lenses: Lenses;
