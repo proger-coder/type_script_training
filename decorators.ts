@@ -2,7 +2,7 @@
 function classDeco(constructor: Function):any{
     console.log('constructor = ', constructor);
 }
-function methodDeco(target: Object, propertyKey: string, descriptor: any):any{
+function methodDeco(target: Object, propertyKey: string, descriptor: PropertyDescriptor):any{
     console.log('descriptor = ', descriptor);
 }
 function propertyDeco(target: Object, propertyKey: string):any{

@@ -382,4 +382,3 @@ const f:Props  = 'floors';
 const r:Props = 'roof';
 const e:Props = 'entrances';
 //const err:Props = 'error'; // ошибка
-
