@@ -220,27 +220,6 @@ const bar = new Bar();
 console.log(bar.otherF)
 bar.bar();
 
-// ------- Дженерики -------------
-function identity<Type>(argument:Type): Type{
-    return argument;
-}
-
-console.log(identity(6));
-
-function reverse<Type>(array:Type[]): Type[]{
-    return array.reverse();
-}
-
-console.log(reverse([1,2,3]));
-
-interface Lengthwise {
-    length: number;
-}
-
-function getLength<T extends Lengthwise>(arg: T): number {
-    return arg.length;
-}
-
 // ------- Расширение типов ------
 
 interface innerAddress {
@@ -353,7 +332,7 @@ enum keyVal {
     moto = 'Honda',
 }
 
-console.log(keyVal[0]); // undefined
+//console.log(keyVal[0]); // undefined
 console.log(keyVal.moto); // Honda
 
 // --- Классы: -----------
@@ -410,7 +389,7 @@ function deco(target: Object, propertyKey: string, descriptor: any):any{
     console.log(descriptor);
 }
 function classDeco(constructor: Function):any{
-    return constructor('albert', 58);
+    console.log(constructor);
 }
 
 @classDeco
